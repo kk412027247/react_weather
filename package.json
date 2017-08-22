@@ -2,6 +2,7 @@
   "name": "react_weather",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://www.weather.com.cn/",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
