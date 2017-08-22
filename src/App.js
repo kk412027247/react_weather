@@ -1,21 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+import {view as CitySelector}
+
+class Weather extends React.Component {
+  constructor(){
+    super(...arguments);
+    this.state={weather : null}
+  }
+
+  componentDidMount(){
+    const apiUrl = `/data/cityinfo/${cityCode}.html`;
+    fetch(apiUrl).then((response) => {
+      if(response.status !==200){
+        throw new Error('Fail to get response with status ' + response.status)
+      }
+
+      response.json().then((responseJson)=>{
+        this.setState({weather:responseJson.weatherinfo});
+      }).catch((error) => {
+        this.setState({weather:null})
+      })
+    }).catch((error) =>{
+      this.setState({weather:null})
+    })
+  }
+
+  render(){
+    if(!this.state.weather){
+      return <div>暂无数据1</div>
+    }
+
+    const {city, weather, temp1 ,temp2 }= this.state.weather;
+
+    return(
+      <div>
+        {city} {weather} 最低气温 {temp1} 最高气温 {temp2}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default Weather;
+
