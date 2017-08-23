@@ -1,13 +1,13 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk' ;
-import {reducer as weatherReaducer } from './index';
+import {reducer as weatherReducer } from './weather/';
 import Perf from 'react-addons-perf';
 
 const win = window;
 win.Perf = Perf;
 
 const reducer = combineReducers({
-  weather:weatherReaducer,
+  weather:weatherReducer,
 });
 
 const middlewares = [thunkMiddleware];

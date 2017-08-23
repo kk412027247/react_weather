@@ -4,12 +4,12 @@ export const fetchWeatherStarted = () =>({
   type:FETCH_STARTED
 });
 
-export const fetchWeatherSuccess = () => ({
+export const fetchWeatherSuccess = (result) => ({
   type:FETCH_SUCCESS,
   result
 });
 
-export const fetchWeatherFailure = () =>({
+export const fetchWeatherFailure = (error) =>({
   type:FETCH_FAILURE,
   error
 });
