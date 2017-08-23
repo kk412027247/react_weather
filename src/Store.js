@@ -12,7 +12,7 @@ const reducer = combineReducers({
 
 const middlewares = [thunkMiddleware];
 if (process.env.NODE_ENV !== 'production'){
-  middlewares.push(require('redux-immutable-state-invariant')()) ;
+  middlewares.push(require('redux-immutable-state-invariant').default()) ;
 }
 
 const storeEnhancers = compose(applyMiddleware(...middlewares),
